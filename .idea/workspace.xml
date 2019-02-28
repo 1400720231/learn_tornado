@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c736161b-d51f-4199-80df-05e1b86b40d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/chapter01/tornado_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter01/tornado_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter02/url_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter02/url_config.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,11 +54,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chapter02/url_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+            <state relative-caret-position="387">
+              <caret line="78" column="97" selection-start-line="78" selection-start-column="97" selection-end-line="78" selection-end-column="97" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -74,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../lib/python3.6/site-packages/tornado/web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="195" column="4" lean-forward="true" selection-start-line="195" selection-start-column="4" selection-end-line="214" selection-end-column="12" />
+            <state relative-caret-position="217">
+              <caret line="451" column="66" selection-start-line="451" selection-start-column="61" selection-end-line="451" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -94,15 +104,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
               <caret line="232" column="8" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../lib/python3.6/site-packages/tornado/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -146,6 +147,7 @@
         <option value="$PROJECT_DIR$/chapter01/httpclient_tes.py" />
         <option value="$PROJECT_DIR$/chapter01/tornado_spider.py" />
         <option value="$PROJECT_DIR$/chapter02/firse_sever.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/chapter02/url_config.py" />
       </list>
     </option>
@@ -284,12 +286,12 @@
       <option name="presentableId" value="Default" />
       <updated>1551247156666</updated>
       <workItem from="1551247164515" duration="15858000" />
-      <workItem from="1551316434989" duration="13218000" />
+      <workItem from="1551316434989" duration="15405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29076000" />
+    <option name="totallyTimeSpent" value="31263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1849" height="902" extended-state="6" />
@@ -436,6 +438,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/python3.6/site-packages/tornado/web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="451" column="66" selection-start-line="451" selection-start-column="61" selection-end-line="451" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../lib/python3.6/site-packages/tornado/routing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
@@ -443,17 +452,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/python3.6/site-packages/tornado/web.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="195" column="4" lean-forward="true" selection-start-line="195" selection-start-column="4" selection-end-line="214" selection-end-column="12" />
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter02/url_config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+        <state relative-caret-position="387">
+          <caret line="78" column="97" selection-start-line="78" selection-start-column="97" selection-end-line="78" selection-end-column="97" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

@@ -61,12 +61,13 @@ class MainHandler5(web.RequestHandler):
     """
     async def get(self, name,*args, **kwargs):
         # 获取路由?后面带的参数，类似django的request.GET.get('greeting', 'Hello')
-        greeting = self.get_argument('greeting', 'Hello')
+        # greeting = self.get_argument('greeting', 'Hello')
+        greeting2 = self.get_query_argument("greeting", "hello2")
         print(name)
-        print(greeting)
+        print(greeting2)
         print(args)
     """
-    用同样的get_argument函数在post中可以接受用户post过来的参数，检测代码如下(当然也可以postman)：
+    用同样的get_body_argument函数在post中可以接受用户post过来的参数，检测代码如下(当然也可以postman)：
     
         import requests
         url = "http://127.0.0.1:8888/hander5/xiongyao/"
@@ -74,11 +75,15 @@ class MainHandler5(web.RequestHandler):
         res = requests.post(url=url, data=data)
         print(res.status_code)
         print(res.text)    
+    但是不管是get_body_argument还是 get_query_argument，get_argument都可以获取到其中的参数，
+    文档传送门：http://www.tornadoweb.org/en/stable/_modules/tornado/web.html#RequestHandler.initialize
     """
     async def post(self, *args, **kwargs):
         name = self.get_argument('name', 'pig')
         passwd = self.get_argument("passwd","pigpwd")
-        self.write(name+passwd)
+        name2 = self.get_body_argument("name", " pig2")
+        passwd2 = self.get_body_argument("passwd2", " pigpwd")
+        self.write(name+passwd+'|'+name2+passwd2)
 
 
 my_dict = {"name":"panda","age":22}
@@ -94,7 +99,8 @@ urls = [
 
 """
     路由后面问好的意义是像django一样当访问的路由后面忘记了末尾的“/”时候不会自动不全，但是也能正常访问，不然tornado会报错
-当使用tornado.web.URLSpec的时候才可以用name参数，类似django的namespace,name
+类似django的namespace,name,官网文档没有用tornado.web.URLSpec也可以和上面一样传所有参数，那么tornado.web.URLSpec的
+意义在哪里，文档传送门:http://www.tornadoweb.org/en/stable/guide/structure.html#handling-request-input
 
 
 在路由4中的my_dict参数的来由如下：
