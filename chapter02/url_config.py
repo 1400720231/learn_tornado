@@ -49,6 +49,7 @@ class MainHandler4(web.RequestHandler):
     def initialize(self,name,age):
         self.name = name
         self.age = age
+
     async def get(self, *args, **kwargs):
         self.write(self.name+str(self.age))
 
@@ -61,33 +62,54 @@ class MainHandler5(web.RequestHandler):
     """
     async def get(self, name,*args, **kwargs):
         # 获取路由?后面带的参数，类似django的request.GET.get('greeting', 'Hello')
-        # greeting = self.get_argument('greeting', 'Hello')
-        greeting2 = self.get_query_argument("greeting", "hello2")
-        print(name)
-        print(greeting2)
-        print(args)
-    """
-    用同样的get_body_argument函数在post中可以接受用户post过来的参数，检测代码如下(当然也可以postman)：
-    
-        import requests
-        url = "http://127.0.0.1:8888/hander5/xiongyao/"
-        data = {"name":"panda","passwd":"passwd"}
-        res = requests.post(url=url, data=data)
-        print(res.status_code)
-        print(res.text)    
-    但是不管是get_body_argument还是 get_query_argument，get_argument都可以获取到其中的参数，
-    文档传送门：http://www.tornadoweb.org/en/stable/_modules/tornado/web.html#RequestHandler.initialize
-    """
+        name1= self.get_argument('name', 'pig1')
+        name2= self.get_query_argument("name", "pig2")
+        name3 = self.get_body_argument("name","pig3")
+        print(name1,name2,name3)
+        self.write(name1+name2+name3)
+
     async def post(self, *args, **kwargs):
-        name = self.get_argument('name', 'pig')
-        passwd = self.get_argument("passwd","pigpwd")
-        name2 = self.get_body_argument("name", " pig2")
-        passwd2 = self.get_body_argument("passwd2", " pigpwd")
-        self.write(name+passwd+'|'+name2+passwd2)
+        name1 = self.get_argument('name', 'pig1')
+        name2 = self.get_query_argument("name", "pig2")
+        try:
+            name3 = self.get_body_argument("name", "pig3")
+        except Exception as e:
+            # 可以手动修改状态码
+            self.set_status(500)
+
+        print(name1, name2, name3)
+        """
+        可以联系使用write，因为是长连接会把每次的write内容缓存，最后一次性返回给客户端
+        可以self.finish({"msg":"已经结束了哟"})来结束长连接
+        """
+        self.write(name1 + name2 + name3)
+        self.write("可以连续使用write")
+
+    def write_error(self, status_code, **kwargs):
+        """
+        可以根据状态码来定义返回的页面，也就是可以设置400 500页面
+        """
+        pass
+    """
+        get_query_argument get_query_arguments
+            获取query string参数，在get() 和 post()方法中都能使用
+            get_query_argument 没有获取到name的值就会报错，缺少参数，get_query_arguments则返回空列表
+        get_body_argument get_body_arguments
+            获取post 过来的data数据，在get()和post()中都能用
+            get_body_argument 没有获取到name的值就会报错，缺少参数，get_body_arguments 则返回空列表
+        get_argument get_arguments
+            先从query string中获取参数再从data中获取参数，使用get_argument是如果存在同样的参数，
+        则最会的结果会被data中的参数替代，比如/?name=panda data={"name":"panda2"}那么获取到的
+        值就是name=panda2, 使用get_arguments就会避免这样的问题，因为他们吧参数接收程列表name=['panda','panda2']
+        
+        如果穿过来的值不是data字典的形式传过来而是json的格式，比如requests.post(url,json={"name":"panda"})
+        那么接收到的json={"name":"panda"}的值在self.request.body中,而且是bytes类型的数据，所以self.requets.body.decode("utf-8")
+        
+        文档传送门：http://www.tornadoweb.org/en/stable/_modules/tornado/web.html#RequestHandler.initialize
+    """
 
 
 my_dict = {"name":"panda","age":22}
-
 
 urls = [
     tornado.web.URLSpec("/", MainHandler, name="index"),
@@ -142,7 +164,12 @@ if __name__ == "__main__":
 知识点：
     1.url配置： tornado.web.URLSpec("/hander5/", MainHandler5)
     2.url传参： tornado.web.URLSpec("/hander5/(?P<name>\w+)/?" ,MainHandler5)
-    3.获取.../?name=panda问号后面的值: get函数下，self.get_argument
-    4.获取post过来的值:post函数下，self.get_argument
+    3.获取.../?name=panda问号后面的值: get函数下，self.get_argument，get_query_argument
+    4.获取post过来的值:post函数下，self.get_argument get_body_argument
     5.初始化传参：重载initialize函数
+    6.redirect重定向
+    7.self.write_error 可以根据状态码配置400 500页面
+    8.self.finish 提前停止长连接
+    9.self.write +self.write两次write，因为长连接可以缓存数据，最后一次返回
+    10.self.set_statue_code 修改默认返回状态码
 """
